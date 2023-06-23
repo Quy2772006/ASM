@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            overflow: hidden;
+            cursor: none;
+        }
+        .container{
+            height: 400px;
+            width: 700px;
+            overflow: hidden;
+            margin: 100px auto;
+            box-shadow: 1px 1px 5px gray;
+        }
+        .container .slides{
+            height: 100%;
+            width: 500%;
+            display: flex;
+        }
+        .container .slides > img{
+            height: 100%;
+            width: 20%;
+            object-fit: cover;
+        }
+        .fa-arrow-left{
+            font-size: 100px;
+            color: red;
+            position: absolute;
+            top: 40% ;
+            text-shadow: 0px 0px 5px gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slides">
+            <img src="../cafe poster/nathan-dumlao-6VhPY27jdps-unsplash.jpg" alt="Image 1">
+            <img src="../cafe poster/rene-porter-1t8go-nyVyE-unsplash.jpg" alt="Image 2">
+            <img src="../cafe poster/tyler-nix-2rZq49uGxLk-unsplash.jpg" alt="Image 3">
+        </div> 
+    </div>
+    <i class="fas fa-arrow-left"></i>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(window).mousemove(function(event){
+                var arrow = $('.fa-arrow-left');
+                var xpos = event.clientX / 17;
+                $('.slides > img:nth-child(1)').css({"margin-left": -80.3 + xpos + '%'});  
+                arrow.offset({left: xpos * 16});
+                if(xpos >= 40){
+                    arrow.css({"transform":"rotateZ(180deg)"});
+                }else{
+                    arrow.css({"transform":"rotateZ(0deg)"});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
